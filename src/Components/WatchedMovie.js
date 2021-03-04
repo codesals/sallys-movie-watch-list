@@ -3,11 +3,11 @@ import movieStore from "../stores/movieStore";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 
-const Movie = () => {
-  const unwatchedMovies = movieStore.movies.filter(
-    (movie) => movie.watched === 0
+const WatchedMovie = () => {
+  const watchedMovies = movieStore.movies.filter(
+    (movie) => movie.watched === 1
   );
-  return unwatchedMovies.map((movie) => {
+  return watchedMovies.map((movie) => {
     return (
       <ListGroup.Item>
         {movie.name}
@@ -33,4 +33,4 @@ const Movie = () => {
   });
 };
 
-export default observer(Movie);
+export default observer(WatchedMovie);
