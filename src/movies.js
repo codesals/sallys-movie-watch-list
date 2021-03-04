@@ -30,12 +30,4 @@ const movies = [
   },
 ];
 
-// const movies = [
-//   "Pride & Prejudice",
-//   "A Beautiful Mind",
-//   "Cast Away",
-//   "Now You See Me",
-//   "Snowden",
-// ];
-
 export default movies;

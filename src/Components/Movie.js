@@ -3,11 +3,15 @@ import movieStore from "../stores/movieStore";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 
-const Movie = () => {
+const Movie = ({ queryUnwatched }) => {
   const unwatchedMovies = movieStore.movies.filter(
     (movie) => movie.watched === 0
   );
-  return unwatchedMovies.map((movie) => {
+
+  const filteredMovies = unwatchedMovies.filter((movie) =>
+    movie.name.toLowerCase().includes(queryUnwatched)
+  );
+  return filteredMovies.map((movie) => {
     return (
       <ListGroup.Item>
         {movie.name}
@@ -24,7 +28,10 @@ const Movie = () => {
           variant="info"
           size="sm"
           style={{ float: "right", margin: "1%" }}
-          onClick={() => movieStore.toggleWatchMovie(movie.id)}
+          onClick={() => {
+            movieStore.toggleWatchMovie(movie.id);
+            // alert(movie.watched);
+          }}
         >
           {movie.watched === 0 ? "Watched" : "Unwatch"}
         </Button>
